@@ -1,24 +1,25 @@
 import { useState } from "react";
-// import useMutationRequest from "../../hooks/useMutate.js";
-import "./Login.module.css"; 
+import useMutationRequest from "../../hooks/useMutate.js";
+import "./Login.css"; 
 
 export default function Login() {
+  const defaultUrl = 'http://localhost:3030/users/login'
+
   const [email, setEmail] = useState("");
+  const [username,setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { mutate, loading, error, data } = useMutationRequest(); 
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    console.log("Logging in with", email, password);
 
-    // Prepare login data
     const loginData = {
       email,
+      username,
       password,
     };
 
-    // Call the mutate function with the login endpoint
-    await mutate("https://your-api-url/login", "POST", loginData);
+    await mutate(defaultUrl, "POST", loginData);
   };
 
   return (
@@ -37,6 +38,16 @@ export default function Login() {
             />
           </div>
           <div className="input-group">
+            <span className="icon">👤</span>
+            <input
+              type="username"
+              placeholder="Enter your username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group">
             <span className="icon">🔒</span>
             <input
               type="password"
@@ -51,7 +62,7 @@ export default function Login() {
           </button>
         </form>
         {error && <p className="error-message">{error}</p>}
-        {data && <p>Welcome, {data.user.name}!</p>} {/* Display user data on successful login */}
+        {data && <p>Welcome, {username}!</p>} {/* Display user data on successful login */}
       </div>
     </div>
   );
