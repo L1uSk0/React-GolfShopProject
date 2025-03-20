@@ -1,26 +1,25 @@
 import { useState } from "react";
-import useMutationRequest from "../../hooks/useMutate.js"
-import "./Register.css"; 
+import { useRegister } from "../../api/authApi.js";
+import { useNavigate } from "react-router";
+import "./Register.css";
 
 export default function Register() {
-    const defaultUrl = 'http://localhost:3030/users/register'
-
     const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const { mutate, loading, error, data } = useMutationRequest(); 
+    const navigate = useNavigate();
+
+    const { register, loading, error } = useRegister();
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        console.log("Registering with", email, password);
 
-        // Prepare registration data
-        const registerData = {
-            email,
-            password,
-        };
-
-        // Call the mutate function with the register endpoint
-        await mutate(defaultUrl, "POST", registerData);
+        try {
+            await register(email, username, password);
+            navigate("/"); // 
+        } catch (err) {
+            console.error("Registration failed:", err);
+        }
     };
 
     return (
@@ -29,12 +28,22 @@ export default function Register() {
                 <h2>Golf Club Register</h2>
                 <form onSubmit={handleRegister}>
                     <div className="input-group">
-                        <span className="icon">👤</span>
+                        <span className="icon">📧</span>
                         <input
                             type="email"
                             placeholder="Enter your email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="input-group">
+                        <span className="icon">👤</span>
+                        <input
+                            type="text"
+                            placeholder="Enter your username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
                             required
                         />
                     </div>
@@ -52,8 +61,8 @@ export default function Register() {
                         {loading ? "Registering..." : "Register"}
                     </button>
                 </form>
+
                 {error && <p className="error-message">{error}</p>}
-                {data && <p>Welcome, {data.user.name}!</p>} {/* Display user data on successful registration */}
             </div>
         </div>
     );

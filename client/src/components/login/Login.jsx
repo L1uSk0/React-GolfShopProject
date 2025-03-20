@@ -1,25 +1,25 @@
 import { useState } from "react";
-import useMutationRequest from "../../hooks/useMutate.js";
 import "./Login.css"; 
+import { useNavigate } from "react-router";
+import { useLogin } from "../../api/authApi.js";
 
 export default function Login() {
-  const defaultUrl = 'http://localhost:3030/users/login'
 
   const [email, setEmail] = useState("");
-  const [username,setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { mutate, loading, error, data } = useMutationRequest(); 
+  const navigate = useNavigate();
+
+  const { login, loading, error } = useLogin(); 
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    const loginData = {
-      email,
-      username,
-      password,
-    };
-
-    await mutate(defaultUrl, "POST", loginData);
+    try {
+        await login(email,password);
+        navigate("/")
+    } catch (err) {
+        console.error("Login failed:", err);
+    }
   };
 
   return (
@@ -38,16 +38,6 @@ export default function Login() {
             />
           </div>
           <div className="input-group">
-            <span className="icon">👤</span>
-            <input
-              type="username"
-              placeholder="Enter your username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
-          </div>
-          <div className="input-group">
             <span className="icon">🔒</span>
             <input
               type="password"
@@ -62,7 +52,6 @@ export default function Login() {
           </button>
         </form>
         {error && <p className="error-message">{error}</p>}
-        {data && <p>Welcome, {username}!</p>} {/* Display user data on successful login */}
       </div>
     </div>
   );
