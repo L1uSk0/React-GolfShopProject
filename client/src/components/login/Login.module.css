@@ -1,0 +1,65 @@
+/* Background */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url("https://www.pontevedra.com/sites/default/files/styles/hero/public/2023-03/Ocean%20Course%2016%20Hero_0-min.jpg?h=0caf3701&itok=1sdQzlPh") no-repeat center center/cover;
+  }
+  
+  /* Login */
+  .login-box {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px;
+  }
+  
+  /* Title */
+  .login-box h2 {
+    color: #2c7c2c;
+    margin-bottom: 1rem;
+  }
+  
+  /* Input */
+  .input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    background: white;
+    margin-bottom: 1rem;
+  }
+  
+  .input-group .icon {
+    color: #2c7c2c;
+    margin-right: 10px;
+  }
+  
+  .input-group input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+  }
+  
+  /* Button */
+  button {
+    width: 100%;
+    padding: 10px;
+    background: #2c7c2c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background: #245d24;
+  }
+  
