@@ -1,14 +1,33 @@
+import { useUserContext } from "../../contexts/UserContext.jsx";
+import { Link } from "react-router";
+import useAuth from "../../hooks/useAuth.js";
+
 export default function Header() {
+    const { username } = useUserContext();
+    const { email, isAuthenticated } = useAuth();
+
     return (
         <>
             <header>
                 <h1>Welcome to Golf Shop</h1>
                 <nav>
                     <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/register">Register</a></li>
-                        <li><a href="/login">Login</a></li>
-                        <li><a href="/items/create">Sell an Item</a></li>
+                        <li><Link to="/">Home</Link></li>
+                        {isAuthenticated
+                            ? (
+                                <>
+                                    <li><Link to="/logout">Logout</Link></li>
+                                    <li><Link to="/items/create">Sell an Item</Link></li>
+                                    {username ? <p>Welcome, {username}!</p> : ""}
+                                </>
+                            ) :
+                            (
+                                <>
+                                    <li><Link to="/register">Register</Link></li>
+                                    <li><Link to="/login">Login</Link></li>
+                                </>
+                            )
+                        }
                     </ul>
                 </nav>
             </header>
