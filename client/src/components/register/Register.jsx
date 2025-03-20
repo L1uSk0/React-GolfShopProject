@@ -1,11 +1,13 @@
 import { useState } from "react";
-// import useMutationRequest from "../../hooks/useMutate.js"; // adjust path as needed
-import "./Register.module.css"; // Import the CSS file
+import useMutationRequest from "../../hooks/useMutate.js"
+import "./Register.css"; 
 
 export default function Register() {
+    const defaultUrl = 'http://localhost:3030/users/register'
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const { mutate, loading, error, data } = useMutationRequest(); // Destructure the mutate function and other states
+    const { mutate, loading, error, data } = useMutationRequest(); 
 
     const handleRegister = async (e) => {
         e.preventDefault();
@@ -18,7 +20,7 @@ export default function Register() {
         };
 
         // Call the mutate function with the register endpoint
-        await mutate("https://your-api-url/register", "POST", registerData);
+        await mutate(defaultUrl, "POST", registerData);
     };
 
     return (
