@@ -25,7 +25,7 @@ export default function useMutationRequest() {
             return result;
         } catch (err) {
             setError(err.message || "Something went wrong");
-            throw err; // Allows handling the error in the calling component
+            throw err; 
         } finally {
             setLoading(false);
         }

@@ -1,27 +1,25 @@
 import { useContext } from "react";
-import { UserContext } from "../contexts/UserContext";
-import apiRequest from "../utils/request";
+import { UserContext } from "../contexts/UserContext.jsx";
+import { useLogin, useRegister, useLogout } from "../api/authApi.js";
 
 export default function useAuth() {
-    const { accessToken, _id, ...authData } = useContext(UserContext);
-    
-    const authRequest = (method, url, data = null, options = {}) => {
-        const headers = accessToken 
-            ? { 'X-Authorization': accessToken, ...options.headers } 
-            : options.headers;
-
-        return apiRequest[method.toLowerCase()](url, data, { ...options, headers });
-    };
+    const authData = useContext(UserContext);
+    const { login, loading: loginLoading, error: loginError } = useLogin();
+    const { register, loading: registerLoading, error: registerError } = useRegister();
+    const { isLoggedOut, loading: logoutLoading, error: logoutError } = useLogout();
 
     return {
         ...authData,
-        userId: _id,
-        isAuthenticated: Boolean(accessToken),
-        request: {
-            get: (url, options) => authRequest('GET', url, null, options),
-            post: (url, data, options) => authRequest('POST', url, data, options),
-            put: (url, data, options) => authRequest('PUT', url, data, options),
-            delete: (url, options) => authRequest('DELETE', url, null, options),
-        }
+        userId: authData._id,
+        isAuthenticated: !!authData.accessToken,
+        login,
+        register,
+        isLoggedOut,
+        loginLoading,
+        registerLoading,
+        logoutLoading,
+        loginError,
+        registerError,
+        logoutError,
     };
 }
