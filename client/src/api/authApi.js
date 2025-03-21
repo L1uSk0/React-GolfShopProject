@@ -1,64 +1,52 @@
-import { useContext, useEffect } from "react";
-import { UserContext } from "../contexts/UserContext.jsx";
-import useMutationRequest from "../hooks/useMutate.js";
+import { useEffect } from "react";
+import { useContext } from "react";
+import request from "../utils/request"
+import { UserContext } from "../contexts/UserContext";
 
-const baseUrl = "http://localhost:3030/users";
+const baseUrl = 'http://localhost:3030/users';
 
 export const useLogin = () => {
-    const { userLoginHandler } = useContext(UserContext);
-    const { mutate, loading, error } = useMutationRequest();
+    const login = async (email, password) =>
+        request.post(
+            `${baseUrl}/login`,
+            { email, password },
+            // { signal: abortRef.current.signal }
+        );
 
-    const login = async (email, password) => {
-        const userData = await mutate(`${baseUrl}/login`, "POST", { email, password });
-
-        if (userData) {
-            userLoginHandler(userData);
-        }
-
-        return userData;
-    };
-
-    return { login, loading, error };
+    return {
+        login,
+    }
 };
 
 export const useRegister = () => {
-    const { userLoginHandler } = useContext(UserContext);
-    const { mutate, loading, error } = useMutationRequest();
+    const register = (email, password) =>
+        request.post(`${baseUrl}/register`, { email, password });
 
-    const register = async (email, username, password) => {
-        const userData = await mutate(`${baseUrl}/register`, "POST", { email, username, password });
-
-        if (userData) {
-            userLoginHandler(userData); 
-        }
-
-        return userData;
-    };
-
-    return { register, loading, error };
+    return {
+        register,
+    }
 };
 
 export const useLogout = () => {
     const { accessToken, userLogoutHandler } = useContext(UserContext);
-    const { mutate, loading, error } = useMutationRequest();
-
-    const logout = async () => {
-        if (!accessToken) return;
-
-        try {
-            await mutate(`${baseUrl}/logout`, "GET", null, {
-                headers: { "X-Authorization": accessToken },
-            });
-
-            userLogoutHandler(); 
-        } catch (err) {
-            console.error("Logout failed:", err);
-        }
-    };
 
     useEffect(() => {
-        logout(); 
-    }, [accessToken]); 
+        if (!accessToken) {
+            return;
+        }
 
-    return { isLoggedOut: !accessToken, loading, error };
+        const options = {
+            headers: {
+                'X-Authorization': accessToken,
+            }
+        };
+
+        request.get(`${baseUrl}/logout`, null, options)
+            .then(userLogoutHandler);
+
+    }, [accessToken, userLogoutHandler]);
+
+    return {
+        isLoggedOut: !!accessToken,
+    };
 };

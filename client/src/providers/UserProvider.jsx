@@ -1,17 +1,30 @@
-import { UserContext } from "../contexts/UserContext.jsx";
-import usePersistedState from "../hooks/usePersistedState.js";
+import { UserContext } from "../contexts/UserContext";
+import usePersistedState from "../hooks/usePersistedState";
 
 export default function UserProvider({ children }) {
-    const [authData, setAuthData] = usePersistedState("auth", {});
+    const [authData, setAuthData] = usePersistedState("auth", {
+        accessToken: null,
+        _id: null,
+        email: null,
+        username: null,
+    });
 
     const userLoginHandler = (resultData) => {
-        setAuthData(resultData);
+        setAuthData({
+            accessToken: resultData.accessToken || null,
+            _id: resultData._id || null,
+            email: resultData.email || null,
+            username: resultData.username || null,
+        });
     };
 
     const userLogoutHandler = () => {
-        console.log("Logging out: Clearing localStorage");
-        localStorage.removeItem('auth'); 
-        setAuthData({}); 
+        setAuthData({
+            accessToken: null,
+            _id: null,
+            email: null,
+            username: null,
+        });
     };
 
     return (

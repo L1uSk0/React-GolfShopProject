@@ -1,32 +1,37 @@
-const request = async (method, url, data = null, options = {}) => {
-    const config = {
-        method,
-        ...options,
-        headers: {
-            'Content-Type': 'application/json',
-            ...options.headers,
-        },
-    };
+const request = async (method, url, data, options = {}) => {
+    if (method !== 'GET') {
+        options.method = method;
+    }
+
 
     if (data) {
-        config.body = JSON.stringify(data);
+        options = {
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers,
+            },
+            body: JSON.stringify(data),
+        }
     }
 
-    const response = await fetch(url, config);
-
-    if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+    const response = await fetch(url, options);
+    const responseContentType = response.headers.get('Content-Type');
+    if (!responseContentType) {
+        return;
     }
+    
+    const result = await response.json();
 
-    const contentType = response.headers.get('Content-Type');
-    return contentType?.includes('application/json') ? response.json() : response.text();
+    return result;
+
 };
 
-const apiRequest = {
-    get: (url, options) => request('GET', url, null, options),
-    post: (url, data, options) => request('POST', url, data, options),
-    put: (url, data, options) => request('PUT', url, data, options),
-    delete: (url, options) => request('DELETE', url, null, options),
-};
-
-export default apiRequest;
+export default {
+    get: request.bind(null, 'GET'),
+    // get: (...params) => request('GET', ...params)
+    post: request.bind(null, 'POST'),
+    put: request.bind(null, 'PUT'),
+    delete: request.bind(null, 'DELETE'),
+    baseRequest: request,
+}
