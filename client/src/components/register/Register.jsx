@@ -1,6 +1,7 @@
 import { useRegister } from "../../api/authApi.js";
 import { useNavigate } from "react-router";
 import { useUserContext } from "../../contexts/UserContext.jsx";
+import { Link } from "react-router";
 import "./Register.css";
 
 export default function Register() {
@@ -9,9 +10,9 @@ export default function Register() {
     const { userLoginHandler } = useUserContext();
 
     const registerHandler = async (formData) => {
-        
+
         try {
-            const { email,password, rePassword } = Object.fromEntries(formData);
+            const { email, password, rePassword } = Object.fromEntries(formData);
 
             if (password !== rePassword) {
                 console.log('Password missmatch');
@@ -69,6 +70,9 @@ export default function Register() {
                     </div>
                     <button type="submit" value="Register" >Register
                     </button>
+                    <p className="field">
+                        <span>If you already have profile click <Link to="/login">here</Link></span>
+                    </p>
                 </form>
             </div>
         </div>
