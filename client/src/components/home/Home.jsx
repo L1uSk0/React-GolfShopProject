@@ -1,4 +1,4 @@
-import "./Home.module.css";
+import "./Home.css";
 
 const products = [
   {
