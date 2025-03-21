@@ -1,13 +1,12 @@
-import { useEffect } from "react";
-import { useContext } from "react";
-import request from "../utils/request"
+import { useEffect ,useContext} from "react";
 import { UserContext } from "../contexts/UserContext";
+import requests from "../services/requests.js";
 
 const baseUrl = 'http://localhost:3030/users';
 
 export const useLogin = () => {
     const login = async (email, password) =>
-        request.post(
+        requests.post(
             `${baseUrl}/login`,
             { email, password },
             // { signal: abortRef.current.signal }
@@ -20,7 +19,7 @@ export const useLogin = () => {
 
 export const useRegister = () => {
     const register = (email, password) =>
-        request.post(`${baseUrl}/register`, { email, password });
+        requests.post(`${baseUrl}/register`, { email, password });
 
     return {
         register,
@@ -41,7 +40,7 @@ export const useLogout = () => {
             }
         };
 
-        request.get(`${baseUrl}/logout`, null, options)
+        requests.get(`${baseUrl}/logout`, null, options)
             .then(userLogoutHandler);
 
     }, [accessToken, userLogoutHandler]);
