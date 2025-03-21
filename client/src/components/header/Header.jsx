@@ -3,8 +3,7 @@ import { Link } from "react-router";
 import useAuth from "../../hooks/useAuth.js";
 
 export default function Header() {
-    const { username } = useUserContext();
-    const { email, isAuthenticated } = useAuth();
+    const { username, isAuthenticated } = useAuth();
 
     return (
         <>
