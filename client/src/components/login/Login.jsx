@@ -20,6 +20,7 @@ export default function Login() {
       navigate(-1);
     } catch (error) {
       console.error("Login failed:", error);
+      navigate('/login')
       // You can add an error state or show an alert to notify the user
       alert("Invalid credentials or network error. Please try again.");
     }
@@ -55,6 +56,9 @@ export default function Login() {
           <button type="submit" disabled={isPending}>
             {isPending ? "Logging in..." : "Login"}
           </button>
+          <p className="field">
+            <span>If you don't have profile click <Link to="/register">here</Link></span>
+          </p>
         </form>
       </div>
     </div>
