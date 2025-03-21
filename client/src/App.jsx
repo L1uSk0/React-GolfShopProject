@@ -12,6 +12,7 @@ import './App.css'
 import AuthGuard from './guards/AuthGuard.jsx'
 import GuestGuard from './guards/GuestGuard.jsx'
 import Logout from './components/logout/Logout.jsx'
+import Catalog from './components/catalog/Catalog.jsx'
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/items' element={<Catalog />} />
           <Route element={<GuestGuard />}>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
