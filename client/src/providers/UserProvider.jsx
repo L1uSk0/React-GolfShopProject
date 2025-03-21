@@ -1,5 +1,5 @@
-import { UserContext } from "../contexts/UserContext";
-import usePersistedState from "../hooks/usePersistedState";
+import { UserContext } from "../contexts/UserContext.jsx";
+import usePersistedState from "../hooks/usePersistedState.js";
 
 export default function UserProvider({ children }) {
     const [authData, setAuthData] = usePersistedState("auth", {
