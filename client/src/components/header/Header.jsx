@@ -1,10 +1,10 @@
-import { useUserContext } from "../../contexts/UserContext.jsx";
+
 import { Link } from "react-router";
 import useAuth from "../../hooks/useAuth.js";
 
 export default function Header() {
     const { username, isAuthenticated } = useAuth();
-
+    console.log(username);
     return (
         <>
             <header>
@@ -12,6 +12,7 @@ export default function Header() {
                 <nav>
                     <ul>
                         <li><Link to="/">Home</Link></li>
+                        <li><Link to="/items">Catalog</Link></li>
                         {isAuthenticated
                             ? (
                                 <>
@@ -24,7 +25,6 @@ export default function Header() {
                                 <>
                                     <li><Link to="/register">Register</Link></li>
                                     <li><Link to="/login">Login</Link></li>
-                                    <li><Link to="/items">Catalog</Link></li>
                                 </>
                             )
                         }
