@@ -64,11 +64,11 @@ export const useEditItem = () => {
     return {edit}
 }
 
-export const useDeleteGame = () => {
+export const useDeleteItem = () => {
     const {requests} = useAuth();
 
-    const delItem = (itemId) =>
+    const deleteItem = (itemId) =>
         requests.delete(`${baseUrl}/${itemId}`);
 
-    return {delItem}
+    return {deleteItem}
 }
