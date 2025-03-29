@@ -13,7 +13,7 @@
   .details-card {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
     background: white;
     padding: 30px;
     border-radius: 10px;
@@ -25,6 +25,7 @@
   .details-image {
     width: 100%;
     border-radius: 5px;
+    height: 300px;
   }
   
   .close-button {
@@ -35,6 +36,17 @@
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
+  }
+
+  .button {
+    background: #2c7c2c;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-decoration: none;
   }
   
   .close-button:hover {
