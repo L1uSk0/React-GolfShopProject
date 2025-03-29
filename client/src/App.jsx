@@ -14,6 +14,7 @@ import GuestGuard from './guards/GuestGuard.jsx'
 import Logout from './components/logout/Logout.jsx'
 import Catalog from './components/catalog/Catalog.jsx'
 import ItemDetails from './components/details/ItemDetails.jsx'
+import ItemEdit from './components/catalog/editItem/ItemEdit.jsx'
 
 
 function App() {
@@ -27,13 +28,14 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/items' element={<Catalog />} />
+          <Route path='/items/:itemId/details' element={<ItemDetails />} />
           <Route element={<GuestGuard />}>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
           </Route>
           <Route element={<AuthGuard />}>
             <Route path='/items/create' element={<CreateItem />} />
-            <Route path='/items/:id/details' element={<ItemDetails />} />
+            <Route path="/items/:itemId/edit" element={<ItemEdit />} />
             <Route path="/logout" element={<Logout />} />
           </Route>
         </Routes>
