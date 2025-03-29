@@ -1346,6 +1346,78 @@
     	}
     };
     var seedData = {
+        golfitems : [
+            {
+                "_ownerId": "9cb2109a-55cc-4bcf-9d64-09ce53a01723",
+                "name": "Golf Club Set",
+                "brand": "EverFit",
+                "model": "x1",
+                "phoneNumber": "+359111111111",
+                "img": "https://www.bigw.com.au/medias/sys_master/images/images/h26/h3c/63238842777630.jpg",
+                "year": "2020",
+                "quantity": "1",
+                "price": "299",
+                "quality": "very good",
+                "_createdOn": 1743285216226,
+                "_id": "57412d83-cbc5-44d8-a316-9d016f6d5d35"
+            },
+            {
+                "_ownerId": "9cb2109a-55cc-4bcf-9d64-09ce53a01723",
+                "name": "Golf Ball Pack",
+                "brand": "Callaway",
+                "model": "ChromeSoft",
+                "phoneNumber": "+359222222222",
+                "img": "https://www.golftiniwear.com/cdn/shop/files/golftini-x-callaway-golf-balls-3-pack-692445.jpg?v=1726614472&width=851",
+                "year": "2023",
+                "quantity": "299",
+                "price": "49",
+                "quality": "excellent",
+                "_createdOn": 1743285272807,
+                "_id": "7d80c269-d965-4141-801f-f99b7ad03089"
+            },
+            {
+                "_ownerId": "9cb2109a-55cc-4bcf-9d64-09ce53a01723",
+                "name": "Golf Shoes",
+                "brand": "FootJoy",
+                "model": "X21",
+                "phoneNumber": "+359333333333",
+                "img": "https://imageio.forbes.com/specials-images/imageserve/608a2a66bb6337d8bbf583aa/FootJoy-Premiere-Series/960x0.jpg?format=jpg&width=1440",
+                "year": "2022",
+                "quantity": "5",
+                "price": "200",
+                "quality": "excellent",
+                "_createdOn": 1743285333750,
+                "_id": "dececbf0-e7d5-4d63-bce0-ade914a84323"
+            },
+            {
+                "_ownerId": "9cb2109a-55cc-4bcf-9d64-09ce53a01723",
+                "name": "Glove",
+                "brand": "Callaway",
+                "model": "AllWeather",
+                "phoneNumber": "+359444444444",
+                "img": "https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/AADH_PRD/on/demandware.static/-/Sites-CGI-ItemMaster/en_US/v1742578965014/sits/gloves-2019-weather-spann-2-pack/gloves-2019-weather-spann-2-pack_2___1.jpg?sw=1200&q=90&bgcolor=F7F7F7&sfrm=png",
+                "year": "2019",
+                "quantity": "19",
+                "price": "15",
+                "quality": "poor",
+                "_createdOn": 1743285398086,
+                "_id": "6827b815-fcad-4d8f-9cdb-da668a907a70"
+            },
+            {
+                "_ownerId": "9cb2109a-55cc-4bcf-9d64-09ce53a01723",
+                "name": "Bag",
+                "brand": "Titlest",
+                "model": "M2",
+                "phoneNumber": "+3595555555555",
+                "img": "https://www.carlsgolfland.com/media/catalog/product/cache/2a6aa0552ad25addc14fa921d5ef0bc2/t/i/titleist_premium_stand_bag_2022_tb20sxsf_01_black_white_hero.jpg",
+                "year": "2021",
+                "quantity": "2",
+                "price": "299",
+                "quality": "bad",
+                "_createdOn": 1743285450245,
+                "_id": "341711ee-a9a8-4490-a6bb-02217d0841ee"
+            }
+        ],
     	recipes: {
     		"3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
