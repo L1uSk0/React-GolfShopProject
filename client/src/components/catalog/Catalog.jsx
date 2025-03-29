@@ -28,7 +28,7 @@ export default function Catalog() {
         />
         <div className="catalog-grid">
           {filteredItems.length > 0
-            ? filteredItems.map((item) => <SingleItem key={item.id} {...item} />)
+            ? filteredItems.map((item) => <SingleItem key={item._id} {...item} />)
             : <h3 className="no-articles">No articles yet</h3>
           }
         </div>
