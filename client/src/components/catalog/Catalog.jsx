@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./Catalog.css";
+import SingleItem from "./singleItem/SingleItem.jsx";
 
 const fakeData = [
   { id: 1, name: "Golf Club Set", price: "$299", image: "https://www.bigw.com.au/medias/sys_master/images/images/h26/h3c/63238842777630.jpg" },
@@ -22,25 +23,23 @@ export default function Catalog() {
   );
 
   return (
-    <div className="catalog-container">
-      <h2>Golf Equipment Catalog</h2>
-      <input
-        type="text"
-        placeholder="Search for items..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        className="search-bar"
-      />
-      <div className="catalog-grid">
-        {filteredItems.map((item) => (
-          <div key={item.id} className="catalog-item">
-            <img src={item.image} alt={item.name} />
-            <h3>{item.name}</h3>
-            <p>{item.price}</p>
-            <button>Add to Cart</button>
-          </div>
-        ))}
+    <>
+      <div className="catalog-container">
+        <h2>Golf Equipment Catalog</h2>
+        <input
+          type="text"
+          placeholder="Search for items..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="search-bar"
+        />
+        <div className="catalog-grid">
+          {filteredItems.length > 0
+            ? filteredItems.map((item) => <SingleItem key={item.id} {...item} />)
+            : <h3 className="no-articles">No articles yet</h3>
+          }
+        </div>
       </div>
-    </div>
+    </>
   );
 }
