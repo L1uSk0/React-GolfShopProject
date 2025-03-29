@@ -13,6 +13,7 @@ import AuthGuard from './guards/AuthGuard.jsx'
 import GuestGuard from './guards/GuestGuard.jsx'
 import Logout from './components/logout/Logout.jsx'
 import Catalog from './components/catalog/Catalog.jsx'
+import ItemDetails from './components/details/ItemDetails.jsx'
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           </Route>
           <Route element={<AuthGuard />}>
             <Route path='/items/create' element={<CreateItem />} />
+            <Route path='/items/:id/details' element={<ItemDetails />} />
             <Route path="/logout" element={<Logout />} />
           </Route>
         </Routes>
