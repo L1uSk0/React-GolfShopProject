@@ -38,11 +38,6 @@ export default function CreateItem() {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="phoneNumber">Phone Number</label>
-                            <input type="tel" id="phoneNumber" name="phoneNumber" required />
-                        </div>
-
-                        <div className="form-group">
                             <label htmlFor="img">Image URL</label>
                             <input type="url" id="img" name="img" required />
                         </div>
