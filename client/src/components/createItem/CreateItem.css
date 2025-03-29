@@ -1,0 +1,72 @@
+.main-container {
+    text-align: center;
+    padding: 2rem;
+    background: url("https://www.pontevedra.com/sites/default/files/styles/hero/public/2023-03/Ocean%20Course%2016%20Hero_0-min.jpg?h=0caf3701&itok=1sdQzlPh") no-repeat center center/cover;
+    min-height: 100vh;
+}
+
+.create-item-container {
+    max-width: 500px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: #2d6a4f;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.create-item-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #344e41;
+}
+
+.form-group input,
+.form-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #2d6a4f;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(45, 106, 79, 0.3);
+}
+
+.submit-btn {
+    padding: 12px;
+    background: #2d6a4f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background: #1b4332;
+}
