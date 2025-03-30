@@ -12,7 +12,7 @@ export default function SingleItem({
             <div key={_id} className="catalog-item">
                 <img src={img} alt={name} />
                 <h3>{name}</h3>
-                <p>{price}</p>
+                <p>{price}$</p>
                 <button className="add tocard">Add to Cart</button>
                 <Link to={`/items/${_id}/details`} className="details-button">Details</Link>
             </div>
