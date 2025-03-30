@@ -6,9 +6,7 @@ import SingleItem from "./singleItem/SingleItem.jsx";
 
 export default function Catalog() {
   const [search, setSearch] = useState("");
-
-  const {items} = useItems();
-
+  const { items } = useItems();
 
   const filteredItems = items.filter((item) =>
     item.name.toLowerCase().includes(search.toLowerCase())
