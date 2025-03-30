@@ -14,7 +14,8 @@ import GuestGuard from './guards/GuestGuard.jsx'
 import Logout from './components/logout/Logout.jsx'
 import Catalog from './components/catalog/Catalog.jsx'
 import ItemDetails from './components/details/ItemDetails.jsx'
-import ItemEdit from './components/catalog/editItem/ItemEdit.jsx'
+import ItemEdit from './components/editItem/ItemEdit.jsx'
+
 
 
 function App() {
