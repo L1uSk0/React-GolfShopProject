@@ -18,7 +18,7 @@ export default function Login() {
 
       userLoginHandler(authData);
 
-      navigate(-1);
+      navigate('/home');
     } catch (error) {
       console.error("Login failed:", error);
       navigate('/login')
