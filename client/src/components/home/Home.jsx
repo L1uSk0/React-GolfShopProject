@@ -1,9 +1,11 @@
 import "./Home.css";
 
 import { useLatestItems } from "../../api/itemApi.js";
+import { useCart } from "../../contexts/CartContext.jsx";
 
 export default function Home() {
   const { latestItems } = useLatestItems();
+  const { addToCart } = useCart();
 
   return (
     <div className="home-container">
@@ -14,7 +16,7 @@ export default function Home() {
             <img src={items.img} alt={items.name} className="product-image" />
             <h2>{items.name}</h2>
             <p className="price">{items.price}$</p>
-            <button className="buy-button">Add to Cart</button>
+            <button className="buy-button" onClick={() => addToCart(items)}>Add to Cart</button>
           </div>
         ))}
       </div>
