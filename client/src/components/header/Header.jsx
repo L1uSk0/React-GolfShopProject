@@ -1,9 +1,12 @@
+import "./Header.css"
+
 import { Link } from "react-router";
 import useAuth from "../../hooks/useAuth.js";
+import { useCart } from "../../contexts/CartContext.jsx";
 
 export default function Header() {
-    const { username, isAuthenticated } = useAuth();
-    console.log(username);
+    const { email, isAuthenticated } = useAuth();
+    const { cart } = useCart();
     return (
         <>
             <header>
@@ -17,7 +20,6 @@ export default function Header() {
                                 <>
                                     <li><Link to="/logout">Logout</Link></li>
                                     <li><Link to="/items/create">Sell an Item</Link></li>
-                                    {username ? <p>Welcome, {username}!</p> : ""}
                                 </>
                             ) :
                             (
@@ -29,6 +31,16 @@ export default function Header() {
                         }
                     </ul>
                 </nav>
+                <div className="cart-icon">
+                    {isAuthenticated && (
+                        <>
+                            <p>Welcome, {email}!</p>
+                        </>
+                    )}
+                    <p>
+                        <Link to="/cart" className="cartLink">🛒 Cart: {cart.length} items</Link>
+                    </p>
+                </div>
             </header>
         </>
     );
