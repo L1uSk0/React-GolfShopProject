@@ -16,11 +16,11 @@ export const useItems = () => {
 }
 
 export const useItem = (itemId) => {
-    const [item, setItem] = useState({});
+    const [item, setItem] = useState(null);
 
     useEffect(() => {
         requests.get(`${baseUrl}/${itemId}`)
-            .then(setItem)
+            .then(setItem);
     }, [itemId])
 
     return { item };
@@ -41,7 +41,7 @@ export const useLatestItems = () => {
             .then(setLatestItems);
     }, []);
 
-    return {latestItems}
+    return { latestItems }
 
 }
 
@@ -56,19 +56,19 @@ export const useCreateItem = () => {
 }
 
 export const useEditItem = () => {
-    const {requests} = useAuth();
+    const { requests } = useAuth();
 
-    const edit = (itemId,itemData) => 
-        requests.put(`${baseUrl}/${itemId}` , {...itemData, _id:itemId});
+    const edit = (itemId, itemData) =>
+        requests.put(`${baseUrl}/${itemId}`, { ...itemData, _id: itemId });
 
-    return {edit}
+    return { edit }
 }
 
 export const useDeleteItem = () => {
-    const {requests} = useAuth();
+    const { requests } = useAuth();
 
     const deleteItem = (itemId) =>
         requests.delete(`${baseUrl}/${itemId}`);
 
-    return {deleteItem}
+    return { deleteItem }
 }
