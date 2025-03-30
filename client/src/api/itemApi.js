@@ -33,7 +33,7 @@ export const useLatestItems = () => {
         const searchParams = new URLSearchParams({
             sortBy: '_createdOn desc',
             pageSize: 8,
-            select: '_id,img,price,name'
+            select: '_id,img,price,name,quantity,brand,model'
         });
 
         requests.get(`${baseUrl}?${searchParams.toString()}`)
