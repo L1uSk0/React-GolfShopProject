@@ -8,12 +8,13 @@ import { useDeleteItem, useItem } from "../../api/itemApi.js";
 export default function ItemDetails() {
     const navigate = useNavigate();
     const { itemId } = useParams();
-    console.log(itemId);
     const { userId } = useAuth();
     const { item } = useItem(itemId);
     const { deleteItem } = useDeleteItem();
 
-    console.log(item);
+    if (!item) {
+        return <p>Loading...</p>;
+    }
 
     const itemDeleteHandler = async () => {
         const confirmation = confirm(`Are you sure you want to delete ${item.name} item ?`)
@@ -26,13 +27,19 @@ export default function ItemDetails() {
         navigate('/items')
     }
 
+    const handleOutsideClicks = (e) => {
+        if (e.target.id === 'details-overlay') {
+            navigate(-1);
+        }
+    };
+
     const isOwner = userId === item._ownerId
 
 
     return (
         <>
-            <div className="details-overlay">
-                <div className="details-card">
+            <div className="details-overlay" id="details-overlay" onClick={handleOutsideClicks}>
+                <div className="details-card" onClick={(e) => e.stopPropagation()}>
                     <img src={item.img} alt={item.name} className="details-image" />
                     <h3>{item.name}</h3>
                     <p><strong>Price:</strong> {item.price}</p>
@@ -47,7 +54,7 @@ export default function ItemDetails() {
                             <button className="delete-button" onClick={itemDeleteHandler}>Delete</button>
                         </>
                     )}
-                    <button className="close-button">Close</button>
+                    <Link to={`/items`} className="close-button">Cancel</Link>
                 </div>
             </div>
         </>
