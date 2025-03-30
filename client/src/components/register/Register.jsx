@@ -1,8 +1,9 @@
+import "./Register.css";
+
 import { useRegister } from "../../api/authApi.js";
 import { useNavigate } from "react-router";
 import { useUserContext } from "../../contexts/UserContext.jsx";
 import { Link } from "react-router";
-import "./Register.css";
 
 export default function Register() {
     const navigate = useNavigate();
@@ -10,7 +11,6 @@ export default function Register() {
     const { userLoginHandler } = useUserContext();
 
     const registerHandler = async (formData) => {
-
         try {
             const { email, password, rePassword } = Object.fromEntries(formData);
 
@@ -21,16 +21,13 @@ export default function Register() {
             }
 
             const authData = await register(email, password);
-
             userLoginHandler(authData);
 
             navigate('/');
         } catch (error) {
             console.error("Register failed:", error);
-            // You can add an error state or show an alert to notify the user
             alert("Invalid credentials or network error. Please try again.");
         }
-
     }
 
     return (

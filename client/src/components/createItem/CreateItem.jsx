@@ -1,20 +1,19 @@
-import { useNavigate } from "react-router";
 import "./CreateItem.css"
-import { useCreateItem } from "../../api/itemApi.js";
 
+import { useNavigate } from "react-router";
+import { useCreateItem } from "../../api/itemApi.js";
 
 export default function CreateItem() {
     const navigate = useNavigate();
-    const { create:createItem} = useCreateItem();
+    const { create: createItem } = useCreateItem();
 
     const submitAction = async (formData) => {
         const itemData = Object.fromEntries(formData);
-        
+
         await createItem(itemData);
 
         navigate('/items');
     }
-
 
     return (
         <>

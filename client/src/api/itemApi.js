@@ -24,7 +24,6 @@ export const useItem = (itemId) => {
     }, [itemId])
 
     return { item };
-
 }
 
 export const useLatestItems = () => {
@@ -42,7 +41,6 @@ export const useLatestItems = () => {
     }, []);
 
     return { latestItems }
-
 }
 
 export const useCreateItem = () => {
@@ -52,7 +50,6 @@ export const useCreateItem = () => {
         requests.post(baseUrl, itemData)
 
     return { create }
-
 }
 
 export const useEditItem = () => {

@@ -1,12 +1,9 @@
-import { useLatestItems } from "../../api/itemApi.js";
 import "./Home.css";
 
-
-
-
+import { useLatestItems } from "../../api/itemApi.js";
 
 export default function Home() {
-  const {latestItems } = useLatestItems();
+  const { latestItems } = useLatestItems();
 
   return (
     <div className="home-container">

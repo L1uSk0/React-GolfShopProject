@@ -1,9 +1,9 @@
-import React from "react";
 import "./ItemDetails.css";
-import { Link, useNavigate, useParams } from "react-router";
-import useAuth from "../../hooks/useAuth.js";
-import { useDeleteItem, useItem } from "../../api/itemApi.js";
 
+import React from "react";
+import { Link, useNavigate, useParams } from "react-router";
+import { useDeleteItem, useItem } from "../../api/itemApi.js";
+import useAuth from "../../hooks/useAuth.js";
 
 export default function ItemDetails() {
     const navigate = useNavigate();
@@ -34,7 +34,6 @@ export default function ItemDetails() {
     };
 
     const isOwner = userId === item._ownerId
-
 
     return (
         <>

@@ -1,4 +1,9 @@
+import './App.css'
+
 import { Routes, Route } from 'react-router'
+
+import AuthGuard from './guards/AuthGuard.jsx'
+import GuestGuard from './guards/GuestGuard.jsx'
 
 import UserProvider from './providers/UserProvider.jsx'
 
@@ -8,23 +13,16 @@ import Home from './components/home/Home.jsx'
 import Login from './components/login/Login.jsx'
 import Register from './components/Register/Register.jsx'
 import CreateItem from './components/createItem/CreateItem.jsx'
-import './App.css'
-import AuthGuard from './guards/AuthGuard.jsx'
-import GuestGuard from './guards/GuestGuard.jsx'
 import Logout from './components/logout/Logout.jsx'
 import Catalog from './components/catalog/Catalog.jsx'
 import ItemDetails from './components/details/ItemDetails.jsx'
 import ItemEdit from './components/editItem/ItemEdit.jsx'
 
-
-
 function App() {
-
 
   return (
     <>
       <UserProvider>
-
         <Header />
         <Routes>
           <Route path='/' element={<Home />} />

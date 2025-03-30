@@ -3,7 +3,6 @@ const request = async (method, url, data, options = {}) => {
         options.method = method;
     }
 
-
     if (data) {
         options = {
             ...options,
@@ -17,9 +16,9 @@ const request = async (method, url, data, options = {}) => {
 
     try {
         const response = await fetch(url, options);
-        if (!response.ok){
+        if (!response.ok) {
             const errorData = await response.json();
-            if(response.status === 403 && errorData.message == "Invalid access token"){
+            if (response.status === 403 && errorData.message == "Invalid access token") {
                 localStorage.clear();
             }
             throw new Error(errorData.message || "Something went wrong");
@@ -31,15 +30,15 @@ const request = async (method, url, data, options = {}) => {
         if (!responseContentType) {
             return;
         }
-        
+
         const result = await response.json();
-    
+
         return result;
 
     } catch (error) {
         console.error("API Request Error:", error.message || error);
-        alert(error.message || "An unexpected error occurred."); 
-        throw error; 
+        alert(error.message || "An unexpected error occurred.");
+        throw error;
     }
 };
 

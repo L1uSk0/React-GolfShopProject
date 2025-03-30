@@ -1,9 +1,8 @@
-import { useState } from "react";
 import "./Catalog.css";
-import SingleItem from "./singleItem/SingleItem.jsx";
+
+import { useState } from "react";
 import { useItems } from "../../api/itemApi.js";
-
-
+import SingleItem from "./singleItem/SingleItem.jsx";
 
 export default function Catalog() {
   const [search, setSearch] = useState("");
