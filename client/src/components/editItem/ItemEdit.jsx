@@ -36,7 +36,7 @@ export default function ItemEdit() {
         <>
             <div className="main-container">
                 <div className="edit-item-container">
-                    <h1>Sell an Item</h1>
+                    <h1>Edit an Item</h1>
                     <form action={formAction} className="edit-item-form">
                         <div className="editform-group">
                             <label htmlFor="name">Item Name</label>
