@@ -5,7 +5,7 @@
     min-height: 100vh;
 }
 
-.create-item-container {
+.edit-item-container {
     max-width: 500px;
     margin: 40px auto;
     background: #ffffff;
@@ -15,33 +15,33 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.create-item-container > h1 {
+.edit-item-container > h1 {
     text-align: center;
     color: #2d6a4f;
     margin-bottom: 20px;
     font-size: 24px;
 }
 
-.create-item-form {
+.edit-item-form {
     display: flex;
     flex-direction: column;
 }
 
-.form-group {
+.editform-group {
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
 }
 
-.form-group label {
+.editform-group label {
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 5px;
     color: #344e41;
 }
 
-.form-group input,
-.form-group select {
+.editform-group input,
+.editform-group select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -49,8 +49,8 @@
     transition: all 0.3s ease-in-out;
 }
 
-.form-group input:focus,
-.form-group select:focus {
+.editform-group input:focus,
+.editform-group select:focus {
     border-color: #2d6a4f;
     outline: none;
     box-shadow: 0px 0px 5px rgba(45, 106, 79, 0.3);

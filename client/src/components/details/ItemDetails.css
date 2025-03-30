@@ -38,7 +38,8 @@
     margin-top: 10px;
   }
 
-  .button {
+  .button , 
+  .close-button{
     background: #2c7c2c;
     color: white;
     padding: 10px;
@@ -47,9 +48,25 @@
     cursor: pointer;
     margin-top: 10px;
     text-decoration: none;
+  } 
+
+  .details-card > p ,
+  .details-card > h3 {
+    background: #2c7c2c;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .details-card > p:hover , 
+  .details-card > h3:hover{
+    background: #245d24;
   }
   
   .close-button:hover {
-    background: #245d24;
+    background: #b9450f;
   }
   
