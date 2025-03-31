@@ -38,7 +38,7 @@ function App() {
             <Route element={<AuthGuard />}>
               <Route path='/items/create' element={<CreateItem />} />
               <Route path="/items/:itemId/edit" element={<ItemEdit />} />
-              <Route path="cart" element={<CartComponent />} />
+              <Route path="/cart" element={<CartComponent />} />
               <Route path="/logout" element={<Logout />} />
             </Route>
           </Routes>
