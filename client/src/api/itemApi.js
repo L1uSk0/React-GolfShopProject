@@ -32,7 +32,7 @@ export const useLatestItems = () => {
     useState(() => {
         const searchParams = new URLSearchParams({
             sortBy: '_createdOn desc',
-            pageSize: 8,
+            pageSize: 5,
             select: '_id,img,price,name,quantity,brand,model'
         });
 
@@ -55,10 +55,19 @@ export const useCreateItem = () => {
 export const useEditItem = () => {
     const { requests } = useAuth();
 
-    const edit = (itemId, itemData) =>
+    const edit = (itemId, itemData) => {
         requests.put(`${baseUrl}/${itemId}`, { ...itemData, _id: itemId });
-
+    }
     return { edit }
+}
+
+export const usePatchItem = () => {
+    const { requests } = useAuth();
+
+    const singleEdit = (itemId, itemData) => {
+        requests.patch(`${baseUrl}/${itemId}`, { ...itemData, _id: itemId });
+    }
+    return {singleEdit}
 }
 
 export const useDeleteItem = () => {
