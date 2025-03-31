@@ -7,7 +7,6 @@ import { useNavigate } from "react-router";
 export default function CartComponent() {
     const navigate = useNavigate();
     const { cart, removeFromCart, totalPrice, clearCart } = useCart();
-    console.log(cart);
     const { edit } = useEditItem();
     const [error, setError] = useState(null);
 
@@ -20,7 +19,7 @@ export default function CartComponent() {
                     setError(`Not enough stock of ${item.name}`)
                     return;
                 }
-                await edit(item._id, { quantity: item.quantity - item.cartQuantity , ...item})
+                await edit(item._id, {  ...item , quantity: item.quantity - item.cartQuantity})
 
             }
 
