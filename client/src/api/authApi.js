@@ -9,7 +9,6 @@ export const useLogin = () => {
         requests.post(
             `${baseUrl}/login`,
             { email, password },
-            // { signal: abortRef.current.signal }
         );
 
     return {

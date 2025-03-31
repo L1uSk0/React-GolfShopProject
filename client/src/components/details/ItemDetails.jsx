@@ -49,7 +49,7 @@ export default function ItemDetails() {
                     <p><strong>Quality:</strong> {item.quality}</p>
                     {isOwner && (
                         <>
-                            <Link to={`/items/${itemId}/edit`} className="button">Edit</Link>
+                            <Link to={`/items/${itemId}/edit`} className="edit-button">Edit</Link>
                             <button className="delete-button" onClick={itemDeleteHandler}>Delete</button>
                         </>
                     )}

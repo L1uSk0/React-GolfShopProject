@@ -4,13 +4,15 @@ import { Link } from "react-router";
 import useAuth from "../../hooks/useAuth.js";
 import { useCart } from "../../contexts/CartContext.jsx";
 
+
+
 export default function Header() {
     const { email, isAuthenticated } = useAuth();
     const { cart } = useCart();
     return (
         <>
             <header>
-                <h1>Welcome to Golf Shop</h1>
+                <h1>Welcome to Jerni's Golf Shop</h1>
                 <nav>
                     <ul>
                         <li><Link to="/">Home</Link></li>

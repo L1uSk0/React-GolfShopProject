@@ -27,28 +27,28 @@
     border-radius: 5px;
     height: 300px;
   }
-  
-  .close-button {
-    background: #2c7c2c;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
 
-  .button , 
-  .close-button{
+  .edit-button , 
+  .close-button,
+  .delete-button {
     background: #2c7c2c;
     color: white;
     padding: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    margin: 5px;
     text-decoration: none;
   } 
+
+  .delete-button {
+    background-color: rgb(212, 65, 65);
+    width: auto;
+  }
+
+  .edit-button {
+    background-color: rgb(231, 228, 46);
+  }
 
   .details-card > p ,
   .details-card > h3 {
@@ -58,7 +58,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    margin: 5px;
   }
 
   .details-card > p:hover , 
@@ -68,5 +68,13 @@
   
   .close-button:hover {
     background: #b9450f;
+  }
+
+  .delete-button:hover {
+    background: #b9450f;
+  }
+
+  .edit-button:hover {
+    background: #f5c526;
   }
   

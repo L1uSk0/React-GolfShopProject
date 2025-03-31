@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <div className="home-container">
-      <h1>Welcome to the Proshop</h1>
+      <h1>We are here to make your shopping experience better !</h1>
       <div className="products-grid">
         {latestItems.map(items => (
           <div key={items._id} className="product-card">
