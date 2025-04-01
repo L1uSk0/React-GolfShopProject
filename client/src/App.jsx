@@ -41,6 +41,7 @@ function App() {
               <Route path="/cart" element={<CartComponent />} />
               <Route path="/logout" element={<Logout />} />
             </Route>
+            <Route path='*' element={<Login />} />
           </Routes>
           <Footer />
         </CartProvider>
