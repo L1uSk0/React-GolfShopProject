@@ -19,6 +19,10 @@ SoftUni React Project
 4.Technologies used 
 -React(Vite) , React hooks(Custom and build in) , Context API , react-router-dom for Frontend
 -SoftUni practice server for backend
+-GoogleCloud hosting the backend
+-Firebase holding the front end
+-Link between Firebase and GCP
+-Workflow between GitHub and firebase for automatic updates when pushing in github.
 
 5.Structure 
 /src
