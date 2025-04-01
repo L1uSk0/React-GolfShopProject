@@ -4,6 +4,9 @@ import { useRegister } from "../../api/authApi.js";
 import { useNavigate } from "react-router";
 import { useUserContext } from "../../contexts/UserContext.jsx";
 import { Link } from "react-router";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 export default function Register() {
     const navigate = useNavigate();
@@ -23,10 +26,12 @@ export default function Register() {
             const authData = await register(email, password);
             userLoginHandler(authData);
 
+            toast.success("Login Successful!")
+
             navigate('/');
         } catch (error) {
             console.error("Register failed:", error);
-            alert("Invalid credentials or network error. Please try again.");
+            navigate('/register')
         }
     }
 

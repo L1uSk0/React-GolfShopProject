@@ -19,6 +19,7 @@ import Catalog from './components/catalog/Catalog.jsx'
 import ItemDetails from './components/details/ItemDetails.jsx'
 import ItemEdit from './components/editItem/ItemEdit.jsx'
 import CartComponent from './components/cart/CartComponent.jsx'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
             </Route>
             <Route path='*' element={<Login />} />
           </Routes>
+          <ToastContainer />
           <Footer />
         </CartProvider>
       </UserProvider>

@@ -4,6 +4,8 @@ import { useNavigate, Link, } from "react-router";
 import { useLogin } from "../../api/authApi.js";
 import { UserContext } from "../../contexts/UserContext.jsx";
 import { useActionState, useContext } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -18,12 +20,12 @@ export default function Login() {
 
       userLoginHandler(authData);
 
+      toast.success("Login Successful!")
+
       navigate('/home');
     } catch (error) {
       console.error("Login failed:", error);
       navigate('/login')
-      // You can add an error state or show an alert to notify the user
-      alert("Invalid credentials or network error. Please try again.");
     }
   };
 

@@ -3,6 +3,8 @@ import { useCart } from "../../contexts/CartContext.jsx"
 import "./CartComponent.css"
 import { useEditItem, useItems } from "../../api/itemApi.js";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CartComponent() {
     const navigate = useNavigate();
@@ -23,26 +25,28 @@ export default function CartComponent() {
                 const serverItem = items.find(item => item._id === cartItem._id);
 
                 if (!serverItem) {
-                    setError(`Item ${cartItem.name} not found on server.`);
+                    const errorMessage = `Item ${cartItem.name} not found on server.`;
+                    setError(errorMessage);
+                    toast.error(errorMessage);
                     return;
                 }
-
                 const updatedQuantity = Number(serverItem.quantity) - Number(cartItem.quantity);
 
                 if (updatedQuantity < 0) {
-                    setError(`Not enough stock of ${cartItem.name}`);
+                    const errorMessage = `Not enough stock of ${cartItem.name}`;
+                    setError(errorMessage);
+                    toast.error(errorMessage);
                     return;
                 }
-
                 await edit(cartItem._id, { ...serverItem, quantity: updatedQuantity });
             }
 
             clearCart();
-            alert("Successful Purchase");
+            toast.success("✅ Successful Purchase!");
             navigate("/");
         } catch (err) {
-            console.error("Purchase error:", err);
-            setError(`Purchase failed: ${err.message || "Something went wrong."}`);
+            console.error("Purchase failed:", err);
+            toast.error(`❌ Purchase failed: ${err.message || "Something went wrong."}`);
         }
     };
 

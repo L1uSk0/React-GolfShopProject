@@ -4,6 +4,8 @@ import React from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { useDeleteItem, useItem } from "../../api/itemApi.js";
 import useAuth from "../../hooks/useAuth.js";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ItemDetails() {
     const navigate = useNavigate();
@@ -21,15 +23,20 @@ export default function ItemDetails() {
         if (!confirmation) {
             return;
         }
+        try {
+            await deleteItem(itemId)
+            toast.success("Item Deleted successfully!");
+            navigate('/items')
+        } catch (error) {
+            console.error("Delete failed:", error);
+            toast.error(error.message || "Failed to delete item. Please try again.");
+        }
 
-        await deleteItem(itemId)
-
-        navigate('/items')
     }
 
     const handleOutsideClicks = (e) => {
         if (e.target.id === 'details-overlay') {
-            navigate(-1);
+            navigate('/items');
         }
     };
 

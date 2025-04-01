@@ -8,7 +8,7 @@ export default function Catalog() {
   const [search, setSearch] = useState("");
   const { items } = useItems();
 
-  const filteredItems = items.filter((item) =>
+  const filteredItems = items.filter((item) => 
     item.name.toLowerCase().includes(search.toLowerCase())
   );
 

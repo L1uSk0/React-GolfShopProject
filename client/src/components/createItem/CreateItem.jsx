@@ -2,6 +2,8 @@ import "./CreateItem.css"
 
 import { useNavigate } from "react-router";
 import { useCreateItem } from "../../api/itemApi.js";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CreateItem() {
     const navigate = useNavigate();
@@ -9,10 +11,15 @@ export default function CreateItem() {
 
     const submitAction = async (formData) => {
         const itemData = Object.fromEntries(formData);
+        try {
+            await createItem(itemData);
+            toast.success("Item Created successfully!");
+            navigate('/items');
+        } catch (error) {
+            console.error("Create failed:", error);
+            toast.error(error.message || "Failed to create item. Please try again.");
+        }
 
-        await createItem(itemData);
-
-        navigate('/items');
     }
 
     return (

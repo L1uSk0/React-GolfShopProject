@@ -3,6 +3,8 @@ import "./ItemEdit.css"
 import { Navigate, useNavigate, useParams } from "react-router";
 import { useEditItem, useItem } from "../../api/itemApi.js";
 import useAuth from "../../hooks/useAuth.js";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ItemEdit() {
 
@@ -26,10 +28,15 @@ export default function ItemEdit() {
 
     const formAction = async (formData) => {
         const itemData = Object.fromEntries(formData);
+        try {
+            await edit(itemId, itemData);
+            toast.success("Item updated successfully!");
+            navigate(`/items/${itemId}/details`);
+        } catch (error) {
+            console.error("Edit failed:", error);
+            toast.error(error.message || "Failed to update item. Please try again.");
+        }
 
-        await edit(itemId, itemData);
-
-        navigate(`/items/${itemId}/details`);
     }
 
     return (
