@@ -30,17 +30,17 @@ export default function CreateItem() {
                     <form action={submitAction} className="create-item-form">
                         <div className="form-group">
                             <label htmlFor="name">Item Name</label>
-                            <input type="text" id="name" name="name" required />
+                            <input type="text" id="name" name="name" minLength={3} maxLength={40} required />
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="brand">Brand</label>
-                            <input type="text" id="brand" name="brand" required />
+                            <input type="text" id="brand" name="brand" minLength={3} maxLength={40} required />
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="model">Model</label>
-                            <input type="text" id="model" name="model" required />
+                            <input type="text" id="model" name="model" minLength={2} maxLength={30}required />
                         </div>
 
                         <div className="form-group">

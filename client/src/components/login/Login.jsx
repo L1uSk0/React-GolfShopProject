@@ -34,7 +34,7 @@ export default function Login() {
   return (
     <div className="login-container">
       <div className="login-box">
-        <h2>Golf Club Login</h2>
+        <h2>Jerni's Golf Club Login Page</h2>
         <form action={loginAction}>
           <div className="input-group">
             <span className="icon">👤</span>

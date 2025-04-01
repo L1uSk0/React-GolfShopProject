@@ -38,7 +38,7 @@ export default function Register() {
     return (
         <div className="register-container">
             <div className="register-box">
-                <h2>Golf Club Register</h2>
+                <h2>Jerni's Golf Club Register Page</h2>
                 <form action={registerHandler}>
                     <div className="input-group">
                         <span className="icon">📧</span>
